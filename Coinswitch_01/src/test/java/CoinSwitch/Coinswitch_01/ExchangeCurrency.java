@@ -34,20 +34,19 @@ public class ExchangeCurrency {
 		WebDriverWait waitTime1 = new WebDriverWait(driver, 40);
 		driver.findElement(
 				By.xpath("//*[@id=\"application__main\"]/div[1]/div[1]/cset/div/form/div[1]/div/div[3]/ul/li[13]"))
-				.click();
+		.click();
 		WebElement To_Currency = driver.findElement(By.id("cset__toCurrencySelector"));
 		To_Currency.click();
 		driver.findElement(
 				By.xpath("//*[@id=\"application__main\"]/div[1]/div[1]/cset/div/form/div[3]/div/div[3]/ul[1]/li[3]"))
-				.click();
-		WebDriverWait waitTime = new WebDriverWait(driver, 40);
-
+		.click();
 		System.out.println("LTC selected");
-
+		WebDriverWait waitTime = new WebDriverWait(driver, 60);
 		WebElement cureency1 = driver.findElement(
 				By.xpath("//*[@id=\"application__main\"]/div[1]/div[1]/cset/div/form/div[1]/div/div[2]/input"));
 		cureency1.clear();
 		cureency1.sendKeys("0.2");
+		WebDriverWait waitTimeForAdress = new WebDriverWait(driver, 70);
 		WebElement Address = driver.findElement(By.xpath("//*[@id=\"toCurrencyAutoComplete\"]"));
 		Address.clear();
 		Address.sendKeys("MGxNPPB7eBoWPUaprtX9v9CXJZoD2465zN");
@@ -60,9 +59,6 @@ public class ExchangeCurrency {
 		Thread.sleep(2000);
 		System.out.println("Exchnage button clicked");
 		WebDriverWait wait2 = new WebDriverWait(driver, 70);
-		// Print the deposit adress.
-		new WebDriverWait(driver, 10)
-				.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\\\"recepientAddress\\\"]")));
 		String deposit_adress = driver.findElement(By.xpath("//*[@id=\"recepientAddress\"]")).getText();
 		System.out.println("Deposit adress is" + deposit_adress);
 		driver.close();
